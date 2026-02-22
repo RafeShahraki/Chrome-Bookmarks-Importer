@@ -5,6 +5,6 @@
   "minAppVersion": "1.0.0",
   "description": "Import Chrome bookmark folders as .md files into your vault.",
   "author": "Rafe Sh",
-  "authorUrl": "https://github.com/RafeShahraki/Chrome-Bookmarks-Importer",
+  "authorUrl": "https://github.com/RafeShahraki",
   "isDesktopOnly": true
 }
