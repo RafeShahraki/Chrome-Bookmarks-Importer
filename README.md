@@ -52,7 +52,7 @@ Instead of letting bookmarks pile up forgotten in your browser, Chrome Bookmarks
 If you want to build it yourself:
 
 ```bash
-git clone https://github.com/your-username/chrome-bookmarks-importer
+git clone https://github.com/RafeShahraki/chrome-bookmarks-importer
 cd chrome-bookmarks-importer
 npm install
 npm run build
