@@ -1,0 +1,125 @@
+/* ── Bookmark Picker Modal ─────────────────────────────────────── */
+
+.bookmark-picker-modal {
+  padding: 4px 8px 12px;
+}
+
+.bookmark-picker-modal h2 {
+  margin-bottom: 12px;
+}
+
+/* Search */
+.bookmark-search-wrap {
+  margin-bottom: 10px;
+}
+
+.bookmark-search-input {
+  width: 100%;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--background-modifier-border);
+  background: var(--background-primary);
+  color: var(--text-normal);
+  font-size: 14px;
+}
+
+/* Select All / Deselect All row */
+.bookmark-btn-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.bookmark-btn-row button {
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  background: var(--background-secondary);
+  border: 1px solid var(--background-modifier-border);
+  color: var(--text-muted);
+}
+
+.bookmark-btn-row button:hover {
+  background: var(--background-modifier-hover);
+  color: var(--text-normal);
+}
+
+/* Folder list */
+.bookmark-list {
+  max-height: 360px;
+  overflow-y: auto;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+
+.bookmark-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-bottom: 1px solid var(--background-modifier-border);
+  transition: background 0.15s;
+}
+
+.bookmark-item:last-child {
+  border-bottom: none;
+}
+
+.bookmark-item:hover {
+  background: var(--background-modifier-hover);
+}
+
+.bookmark-item--selected {
+  background: var(--background-modifier-active-hover);
+}
+
+.bookmark-item input[type="checkbox"] {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  accent-color: var(--interactive-accent);
+}
+
+.bookmark-item-label {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.bookmark-item-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-normal);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bookmark-item-meta {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.bookmark-empty {
+  padding: 16px;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+/* Footer */
+.bookmark-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.bookmark-selected-count {
+  font-size: 13px;
+  color: var(--text-muted);
+}
