@@ -88,19 +88,19 @@ function collectFolders(node, parentPath = "") {
   }
   return results;
 }
-function folderToMarkdown(folder) {
+function folderToMarkdown(folder, depth = 1) {
   var _a, _b;
-  const lines = [`# ${folder.name}`, ""];
+  const lines = [];
+  const heading = "#".repeat(depth);
+  lines.push(`${heading} ${folder.name}`, "");
   for (const child of (_a = folder.children) != null ? _a : []) {
     if (child.type === "url") {
       lines.push(`- [${child.name}](${child.url})`);
-    } else if (child.type === "folder") {
-      lines.push(``, `## ${child.name}`, ``);
-      for (const subChild of (_b = child.children) != null ? _b : []) {
-        if (subChild.type === "url") {
-          lines.push(`- [${subChild.name}](${subChild.url})`);
-        }
-      }
+    }
+  }
+  for (const child of (_b = folder.children) != null ? _b : []) {
+    if (child.type === "folder") {
+      lines.push("", ...folderToMarkdown(child, depth + 1).split("\n"));
     }
   }
   return lines.join("\n");

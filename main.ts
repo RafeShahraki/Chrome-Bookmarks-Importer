@@ -99,19 +99,23 @@ function collectFolders(
 }
 
 /** Turn a folder node into markdown content */
-function folderToMarkdown(folder: BookmarkNode): string {
-  const lines: string[] = [`# ${folder.name}`, ""];
+function folderToMarkdown(folder: BookmarkNode, depth = 1): string {
+  const lines: string[] = [];
+  const heading = "#".repeat(depth);
 
+  lines.push(`${heading} ${folder.name}`, "");
+
+  // First render all direct URLs
   for (const child of folder.children ?? []) {
     if (child.type === "url") {
       lines.push(`- [${child.name}](${child.url})`);
-    } else if (child.type === "folder") {
-      lines.push(``, `## ${child.name}`, ``);
-      for (const subChild of child.children ?? []) {
-        if (subChild.type === "url") {
-          lines.push(`- [${subChild.name}](${subChild.url})`);
-        }
-      }
+    }
+  }
+
+  // Then recurse into subfolders
+  for (const child of folder.children ?? []) {
+    if (child.type === "folder") {
+      lines.push("", ...folderToMarkdown(child, depth + 1).split("\n"));
     }
   }
 
@@ -328,11 +332,10 @@ class FolderPickerModal extends Modal {
       const labelEl = item.createDiv({ cls: "bookmark-item-label" });
       labelEl.createEl("span", { text: label, cls: "bookmark-item-name" });
       labelEl.createEl("span", {
-        text: `${urlCount} link${urlCount !== 1 ? "s" : ""}${
-          subFolderCount > 0
+        text: `${urlCount} link${urlCount !== 1 ? "s" : ""}${subFolderCount > 0
             ? `, ${subFolderCount} subfolder${subFolderCount !== 1 ? "s" : ""}`
             : ""
-        }`,
+          }`,
         cls: "bookmark-item-meta",
       });
 
